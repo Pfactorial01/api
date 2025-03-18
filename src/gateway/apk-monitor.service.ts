@@ -82,10 +82,10 @@ export class ApkMonitorService {
         for (const device of devices) {
           try {
             if (device?.adbId) {
-                await this.installApk("100.92.148.73:41009", apkPath);
+                await this.installApk(device.adbId, apkPath);
             }
           } catch (error) {
-            this.logger.error(`Failed to install ${apk} on device ${"100.92.148.73:41009"}: ${error.message}`);
+            this.logger.error(`Failed to install ${apk} on device ${device.adbId}: ${error.message}`);
             // Continue with next device even if one fails
             continue;
           }

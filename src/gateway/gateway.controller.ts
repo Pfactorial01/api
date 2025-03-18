@@ -49,11 +49,20 @@ export class GatewayController {
   @UseGuards(AuthGuard)
   @Post(['/devices/:id/mirror'])
   async startMirroring(@Param('id') deviceId: string) {
+    const device = await this.gatewayService.getDeviceById(deviceId)
+    if (!device?.adbId) {
       return {
         success: true,
-        wsUrl: 'http://100.92.148.73:3005',
-        deviceId: "100.92.148.73:41009"
+        wsUrl: 'http://100.77.145.14:3005',
+        deviceId: `${device.ip}:${device.adbPort}`
       }
+    } else {
+      return {
+        success: true,
+        wsUrl: 'http://100.90.39.86:3005',
+        deviceId: device.adbId
+      }
+    }
   }
 
   @ApiOperation({ summary: 'Restart device mobile data' })

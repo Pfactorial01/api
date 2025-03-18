@@ -35,7 +35,7 @@ export class GatewayService {
       // Execute the shell command
       const { stdout, stderr } = await execPromise(
       // @ts-ignore
-        `adb -s ${"100.92.148.73:41009"} shell ${command}`,
+        `adb shell ${command}`,
       )
 
       if (stderr) {
@@ -73,9 +73,6 @@ export class GatewayService {
     return new Promise((resolve, reject) => {
       // Turn off mobile data
       const turnOffMobileData = spawn('adb', [
-        '-s',
-        // @ts-ignore
-        `${"100.92.148.73:41009"}`,
         'shell',
         'svc data disable',
       ])
@@ -118,9 +115,6 @@ export class GatewayService {
         // Wait 30 seconds before turning it back on
         setTimeout(() => {
           const turnOnMobileData = spawn('adb', [
-            '-s',
-            // @ts-ignore
-            `${"100.92.148.73:41009"}`,
             'shell',
             'svc data enable',
           ])
