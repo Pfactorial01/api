@@ -32,6 +32,9 @@ JWT_SECRET=secret
 JWT_EXPIRATION=60d
 EOL
 
+DISPLAY=:99
+Xvfb :99 &
+
 # Install Node.js dependencies
 echo "Installing Node.js dependencies..."
 npm install --force
