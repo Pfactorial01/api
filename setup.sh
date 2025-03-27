@@ -34,7 +34,7 @@ EOL
 
 # Install Node.js dependencies
 echo "Installing Node.js dependencies..."
-npm install
+npm install --force
 
 # Build the application
 echo "Building the application..."
